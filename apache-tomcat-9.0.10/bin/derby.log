@@ -1,0 +1,18 @@
+----------------------------------------------------------------
+Sun Jul 15 21:25:24 PDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0164-a155-fb00-000008099498 
+on database directory memory:/Users/stevenho/Desktop/apache-tomcat-9.0.10/bin/myDB with class loader ParallelWebappClassLoader
+  context: philosophy
+  delegate: false
+----------> Parent Classloader:
+java.net.URLClassLoader@533ddba
+ 
+Loaded from file:/Users/stevenho/Desktop/apache-tomcat-9.0.10/webapps/philosophy/WEB-INF/lib/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_172-b11
+user.dir=/Users/stevenho/Desktop/apache-tomcat-9.0.10/bin
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.9.5
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

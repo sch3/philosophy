@@ -8,4 +8,4 @@ add link
 
 To shutdown, run shutdown sh or bat.
 
-If for some reason the page is not found, move war file into webapps and tomcat should upack it
+If for some reason the page is not found, move war file into webapps and tomcat should unpack it
