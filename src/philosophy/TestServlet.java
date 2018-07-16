@@ -94,7 +94,6 @@ public class TestServlet extends HttpServlet {
 			Document doc = Jsoup.connect(url).get();
 			String title = doc.getElementById("firstHeading").ownText();
 			// if philosophy, done
-			System.out.println(title+" "+checkIfVisitedLoop(url,title));
 			if(title.equals("Philosophy")||checkIfVisitedLoop(url,title)) {
 				//done
 				done = true;
@@ -120,18 +119,13 @@ public class TestServlet extends HttpServlet {
 				// find first valid link
 				outerloop:
 				for(Element paragraph: p) {
-					//System.out.println("Paragraph: "+paragraph);
 					HashSet<String> parenthesizedlinks = new HashSet<>();
 					Pattern parenpattern = Pattern.compile("\\((?:[^)(]+|\\((?:[^)(]+|\\([^)(]*\\))*\\))*\\)");
 					Matcher m = parenpattern.matcher(paragraph.html());
-					//System.out.println("Checking content for "+p.html());
 					while(m.find()) {
-						//System.out.println(m.group());
 					    Element links = Jsoup.parse(m.group());
-					    //System.out.println(links);
 					    Elements parenlinks = links.select("a[href]");
 					    for(Element plink: parenlinks) {
-					    	//System.out.println("Adding plink "+plink.toString());
 					    	//abs:href returns nothing
 					    	//System.out.println(plink.attr("href"));
 					    	parenthesizedlinks.add(plink.attr("href"));
@@ -139,7 +133,6 @@ public class TestServlet extends HttpServlet {
 					    }
 					}
 					Elements links = paragraph.select("a[href]");
-					//System.out.println(links.size());
 					for (Element link : links) {
 						String cururl = link.attr("abs:href");
 						// omit each type of nonlink
@@ -149,36 +142,21 @@ public class TestServlet extends HttpServlet {
 						// TODO: Implement db check if visited before, potential check for media. However, wikipedia's media files appear very different from regular links
 						
 						boolean parenthesized = parenthesizedlinks.contains(cururl);//testIfParenthesized(link.attr("href"), p.html());
+						// for testing. may bypass the mathematics loop if checked
 						//boolean visited = checkIfVisited(cururl);
-						//System.out.println(link+" italicized "+italicized+" paren:"+parenthesizedlinks.contains(cururl)+ " visited "+visited+ " cururl "+cururl);
 						
 						if(!cururl.contains("#cite_note")&&!cururl.contains("&redlink=1")&&cururl.startsWith("https://en.wikipedia.org/")&&!cururl.startsWith(url)&&!italicized&&!parenthesized) {
-							//System.out.println(link.parent().getElementsByTag("i").size());
-							//print(" * a: <%s>  (%s)", link.attr("abs:href"), trim(link.text(), 35));
 							url = link.attr("abs:href");
 							break outerloop;
 						}
-						//sound wikimedia links?
-			            // not visited before
 			        }
 				}
-				//System.out.println("done");
 				response.getWriter().println(url);
-				System.out.println("New url: "+url);
-				// if valid link found, add to google guava graph and check for cycle
-				//if cycle, quit
-				// otherwise, switch link variable and restart process
 				
 			}
 			
-			//else
-				// check if loop by checking against db, then quit out afterwards
-				// navigate to that page
-			//print to html and store to db
 			hops++;
-			//done = true;
 		}
-		System.out.println("done");
 		response.getWriter().println("Hops: "+hops);
 		try {
 			Statement dropstmt = conn.createStatement();
@@ -247,9 +225,7 @@ public class TestServlet extends HttpServlet {
 		// or here in other langs: https://stackoverflow.com/questions/6331065/matching-balanced-parenthesis-in-ruby-using-recursive-regular-expressions-like-p
 		Pattern parenpattern = Pattern.compile("\\((?:[^)(]+|\\((?:[^)(]+|\\([^)(]*\\))*\\))*\\)");
 		Matcher m = parenpattern.matcher(allcontent);
-		//System.out.println("Checking content for "+content);
 		while(m.find()) {
-			//System.out.println(m.group());
 		    if(m.group().contains(content)) {
 		    	return true;
 		    }
