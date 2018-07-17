@@ -1,0 +1,9 @@
+0:0:0:0:0:0:0:1 - - [16/Jul/2018:21:19:26 -0700] "GET /philosophy/TestForm.html HTTP/1.1" 200 288
+fe80:0:0:0:0:0:0:1%1 - - [16/Jul/2018:21:19:26 -0700] "GET /philosophy/TestForm.html HTTP/1.1" 200 288
+0:0:0:0:0:0:0:1 - - [16/Jul/2018:21:19:26 -0700] "GET /philosophy/TestForm.html HTTP/1.1" 200 288
+0:0:0:0:0:0:0:1 - - [16/Jul/2018:21:19:57 -0700] "POST /philosophy/FirstServlet HTTP/1.1" 200 880
+0:0:0:0:0:0:0:1 - - [16/Jul/2018:21:20:13 -0700] "POST /philosophy/FirstServlet HTTP/1.1" 200 464
+0:0:0:0:0:0:0:1 - - [16/Jul/2018:21:20:13 -0700] "POST /philosophy/FirstServlet HTTP/1.1" 200 137
+0:0:0:0:0:0:0:1 - - [16/Jul/2018:21:20:21 -0700] "POST /philosophy/FirstServlet HTTP/1.1" 200 137
+fe80:0:0:0:0:0:0:1%1 - - [16/Jul/2018:21:22:20 -0700] "POST /philosophy/FirstServlet HTTP/1.1" 200 137
+fe80:0:0:0:0:0:0:1%1 - - [16/Jul/2018:21:22:41 -0700] "POST /philosophy/FirstServlet HTTP/1.1" 200 708
